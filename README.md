@@ -154,6 +154,7 @@ whitespace or line break after a potential end-of-sentence marker.
 
 
 | Input sentence        | Left  | Middle | Right
+| --------------------- | ----- | ------ | -----
 | I go to Mr. Pete Tong | to Mr | .      | _Pete
 
 ## LSTM
