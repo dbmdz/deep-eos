@@ -30,6 +30,8 @@ function extract {
   popd
 }
 
+mkdir -p data
+
 for LANG_PAIR in $SETIMES_LANG_PAIRS
 do
   download "${BASE_URL}/${BASE_SETIMES}" "${LANG_PAIR}.sentences.tar.xz"
