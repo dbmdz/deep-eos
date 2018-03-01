@@ -263,6 +263,21 @@ SETimes*). That suggests that the CNN model generalizes better than LSTM
 or Bi-LSTM for unseen abbreviations. The worst neural network model (LSTM
 model) still performs 1,6% better than *OpenNLP*.
 
+# Conclusion
+
+In this repository, we propose a general-purpose system for sentence boundary
+detection using different architectures of neural networks. We use the
+*Europarl* and *SETimes* corpus and compare our proposed models with
+*OpenNLP*. We achieve state-of-the-art results.
+
+In a *zero-shot* scenario, in which no manifestation of the test
+abbreviations is observed during training, our system is also robust against
+unseen abbreviations.
+
+The fact that our proposed neural network models perform well on different
+languages and on a *zero-shot* scenario leads us to the conclusion that our
+system is a *general-purpose* system.
+
 ## Evaluation
 
 To reproduce this results, the following scripts can be used:
