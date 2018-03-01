@@ -1,44 +1,49 @@
-architecture=$1
+lang=$1
+architecture=$2
 
 function train {
   # Arguments:
-  # $1 training file
-  echo "Training with ${architecture} architecture"
-  python3 main.py train --training-file=$1 --architecture=${architecture}
+  # $1 language
+  # $2 architecture
+  echo "Training for $lang with $2"
+  python3 main.py train --training-file=$1.train --architecture=$2 --model-filename=${lang}_${architecture}.model
 }
 
 function prepare_dataset {
   # Arguments:
-  # $1 data set name (usually dev or test)
-  echo "Prepare $1 set"
-  cat $1 | tr '\n' ' ' > $1.modified
-  cat $1 | awk '{ print $0 "</eos>" }' > $1.gold
+  # $1 language
+  # $2 data set name (usually dev or test)
+  echo "Prepare $2 set for $1"
+  cat $lang.$2 | tr '\n' ' ' > $lang.$2.modified
+  cat $lang.$2 | awk '{ print $0 "</eos>" }' > $lang.$2.gold
 }
 
 function tagging {
   # Arguments:
-  # $1 data set name (usually dev or test)
-  echo "Tagging $1 set"
-  python3 main.py tag --input-file $1.modified > $1_${architecture}_output.txt
+  # $1 language
+  # $2 data set name (usually dev or test)
+  echo "Tagging $2 set for $1"
+  python3 main.py tag --input-file $1.$2.modified --model-filename=${lang}_${architecture}.model > ${lang}_${architecture}_$2_output.txt
 }
 
 function final_evaluation {
   # Arguments:
-  # $1 data set name (usually dev or test)
-  echo "Evaluation on $1 set"
-  python3 eos-eval/eval.py -g $1.gold -s $1_${architecture}_output.txt | tee $1_${architecture}_evaluation.txt
+  # $1 language
+  # $2 data set name (usually dev or test)
+  echo "Evaluation for $1 on $2 set"
+  python3 eos-eval/eval.py -g $1.$2.gold -s ${lang}_${architecture}_$2_output.txt | tee ${lang}_${architecture}_$2_evaluation.txt
 }
 
 # Disable some TensorFlow warnings and information output
 export TF_CPP_MIN_LOG_LEVEL=3
 
-train ./data/train
-prepare_dataset ./data/dev
-tagging ./data/dev
-final_evaluation ./data/dev
+train $lang $architecture
+prepare_dataset $lang dev
+tagging $lang dev
+final_evaluation $lang dev
 
-prepare_dataset ./data/test
-tagging ./data/test
-final_evaluation ./data/test
+prepare_dataset $lang test
+tagging $lang test
+final_evaluation $lang test
 
 unset TF_CPP_MIN_LOG_LEVEL
