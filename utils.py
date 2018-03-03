@@ -85,12 +85,12 @@ class Utils(object):
         data_set_char_eos = \
             [(1.0, t[m.start() - window_size:m.start()].replace("\n", " ") +
               t[m.start():m.start() + window_size + 1].replace("\n", " "))
-             for m in re.finditer('[\.:?!;)][^\n]?[\n]', t)]
+             for m in re.finditer('[\.:?!;][^\n]?[\n]', t)]
 
         data_set_char_neos = \
             [(0.0, t[m.start() - window_size:m.start()].replace("\n", " ") +
               t[m.start():m.start() + window_size + 1].replace("\n", " "))
-             for m in re.finditer('[\.:?!;)][^\s]?[ ]+', t)]
+             for m in re.finditer('[\.:?!;][^\s]?[ ]+', t)]
 
         return data_set_char_eos + data_set_char_neos
 
@@ -115,7 +115,7 @@ class Utils(object):
         EOS = '([\.:?!;])'
 
         eos_positions = [(m.start())
-                         for m in re.finditer(r'([\.:?!;)])(\s+' + PUNCT + '|' +
+                         for m in re.finditer(r'([\.:?!;])(\s+' + PUNCT + '|' +
                                               PUNCT + '\s+|[\s\n]+)', t)]
 
         # Lets extract 2* window_size before and after eos position and remove
