@@ -19,7 +19,7 @@ from keras.layers.advanced_activations import LeakyReLU
 from utils import Utils
 
 
-class NNEOS(object):
+class EOS(object):
     def __init__(self):
         self.util = Utils()
 

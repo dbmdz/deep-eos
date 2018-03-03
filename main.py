@@ -1,6 +1,6 @@
 import argparse
 
-from nn_eos import NNEOS
+from eos import EOS
 
 
 def parse_arguments():
