@@ -56,7 +56,7 @@ def parse_arguments():
                         help="Defines end-of-sentence marker used for tagging")
     args = parser.parse_args()
 
-    nn_eos = NNEOS()
+    nn_eos = EOS()
 
     if args.mode == "train":
         if not args.training_file:
