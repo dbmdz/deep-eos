@@ -205,64 +205,84 @@ trainable parameters for each model.
 
 # Results
 
-We train a maximum of 10 epochs for each model. For the German and English
-corpus (*Europarl*) the time per epoch is 55 minutes for the Bi-LSTM
-model, 28 minutes for the LSTM model and 5 minutes for the CNN model. For each
-language from the *SETimes* corpus the time per epoch is 5 minutes for the
-Bi-LSMT model, 3 minutes for the LSTM model and 20 seconds for the CNN model.
-Timings are performed on a server machine with a single Nvidia Tesla K20Xm and
-Intel Xeon E5-2630.
+We train a maximum of 5 epochs for each model. For the German and English
+corpus (*Europarl*) the time per epoch is 54 minutes for the Bi-LSTM
+model, 35 minutes for the LSTM model and 7 minutes for the CNN model. For each
+language from the *SETimes* corpus the time per epoch is 6 minutes for the
+Bi-LSTM model, 4 minutes for the LSTM model and 50 seconds for the CNN model.
+Timings are performed on a *DGX-1* with a Nvidia *P-100*.
 
-The results on test set on the *SETimes* corpus are shown in the following table.
-For each language the best neural network model
-outperforms *OpenNLP*. On average, the best neural
-network model is 0.38% better than *OpenNLP*. The worst neural network
-model also outperforms *OpenNLP* for each language. On average, the worst
-neural network model is 0.33% better than *OpenNLP*. In half of the
-cases the bi-directional LSTM model is the best model. In almost all cases the
-CNN model performs worse than the LSTM and bi-directional LSTM model, but it
-still achieves better results than the *OpenNLP* model. This suggests that
+## Development set
+
+The results on the development set for both *Europarl* and *SETimes* are shown
+in the following table.
+
+| Language   | LSTM       | Bi-LSTM    | CNN       | *OpenNLP*
+| ---------- | ---------- | ---------- | --------- | ---------
+| German     | 0.9759     | **0.9760** | 0.9751    | 0.9736
+| English    | **0.9864** | 0.9863     | 0.9861    | 0.9843
+| Bulgarian  | **0.9928** | 0.9926     | 0.9924    | 0.9900
+| Bosnian    | 0.9953     | **0.9958** | 0.9952    | 0.9921
+| Greek      | 0.9959     | **0.9964** | 0.9959    | 0.9911
+| Croatian   | 0.9947     | **0.9948** | 0.9946    | 0.9917
+| Macedonian | 0.9795     | **0.9799** | 0.9794    | 0.9776
+| Romanian   | **0.9906** | 0.9904     | 0.9903    | 0.9888
+| Albanian   | **0.9954** | **0.9954** | 0.9945    | 0.9934
+| Serbian    | **0.9891** | 0.9890     | 0.9886    | 0.9838
+| Turkish    | 0.9860     | **0.9867** | 0.9858    | 0.9830
+
+For each language the best neural network model outperforms *OpenNLP*. On
+average, the best neural network model is 0.32% better than *OpenNLP*. The worst
+neural network model also outperforms *OpenNLP* for each language. On average,
+the worst neural network model is 0.26% better than *OpenNLP*. In over 60% of
+the cases the bi-directional LSTM model is the best model. In almost all cases
+the CNN model performs worse than the LSTM and bi-directional LSTM model, but
+it still achieves better results than the *OpenNLP* model. This suggests that
 the CNN model still needs more hyperparameter tuning.
 
-| Language   | LSTM      | Bi-LSTM   | CNN       | *OpenNLP*
-| ---------- | --------- | --------- | --------- | ---------
-| German     | **97.59** | **97.59** | 97.50     | 97.38
-| English    | 98.61     | **98.62** | 98.55     | 98.40
-| Bulgarian  | 99.22     | **99.27** | 99.22     | 98.87
-| Bosnian    | **99.58** | 99.52     | 99.53     | 99.25
-| Greek      | 99.67     | **99.70** | 99.66     | 99.25
-| Croatian   | **99.46** | 99.44     | 99.44     | 99.07
-| Macedonian | 98.04     | **98.09** | 97.94     | 97.86
-| Romanian   | 99.05     | 99.05     | **99.06** | 98.89
-| Albanian   | **99.52** | 99.51     | 99.47     | 99.34
-| Serbian    | 98.72     | **98.76** | 98.73     | 98.32
-| Turkish    | 98.56     | **98.58** | 98.54     | 98.08
+## Test set
 
-The first two rows in the table above show the results on
-test set on the *Europarl* corpus. For both German and English the best
-neural network model outperforms *OpenNLP*. The CNN
-model performs worse than the LSTM and bi-directional LSTM model but still
-achieves better results than *OpenNLP*. The bi-directional LSTM model is
-the best model and achieves the best results for German and English. On
-average, the best neural network model is 0.22% better than *OpenNLP*,
-whereas the worst neural network model is still 0.14% better than
-*OpenNLP*.
+The results on the development set for both *Europarl* and *SETimes* are shown
+in the following table.
+
+| Language   | LSTM       | Bi-LSTM    | CNN       | *OpenNLP*
+| ---------- | ---------- | ---------- | --------- | ---------
+| German     | 0.9758     | **0.9760** | 0.9751    | 97.38
+| English    | **0.9861** | 0.9860     | 0.9858    | 98.40
+| Bulgarian  | 0.9922     | **0.9923** | 0.9919    | 98.87
+| Bosnian    | 0.9957     | **0.9959** | 0.9953    | 99.25
+| Greek      | 0.9967     | **0.9969** | 0.9963    | 99.25
+| Croatian   | 0.9946     | **0.9948** | 0.9943    | 99.07
+| Macedonian | 0.9810     | **0.9811** | 0.9794    | 97.86
+| Romanian   | **0.9907** | 0.9906     | 0.9904    | 98.89
+| Albanian   | **0.9953** | 0.9949     | 0.9940    | 99.34
+| Serbian    | **0.9877** | **0.9877** | 0.9870    | 98.32
+| Turkish    | **0.9858** | 0.9854     | 0.9854    | 98.08
+
+For each language the best neural network model
+outperforms *OpenNLP*. On average, the best neural
+network model is 0.32% better than *OpenNLP*. The worst neural network
+model also outperforms *OpenNLP* for each language. On average, the worst
+neural network model is 0.25% better than *OpenNLP*. In half of the
+cases the bi-directional LSTM model is the best model. In almost all cases the
+CNN model performs worse than the LSTM and bi-directional LSTM model, but it
+still achieves better results than the *OpenNLP* model.
+
+## *Zero-shot*
 
 | Model     | Precision | Recall | F1
-| --------- | --------- | ------ | ---------
-| LSTM      | 56.62     | 96.25  | 71.29
-| Bi-LSTM   | 60.00     | 97.50  | 74.29
-| CNN       | 61.90     | 97.50  | **75.12**
+| --------- | --------- | ------ | ----------
+| LSTM      | 0.6046    | 0.9750 | 0.7464
+| Bi-LSTM   | 0.6341    | 0.9750 | **0.7684**
+| CNN       | 0.57350   | 0.9750 | 0.7222
 | *OpenNLP* | 54.60     | 96.25  | 69.68
 
-The table above shows the results for the *zero-shot* scenario.
-The CNN model outperforms *OpenNLP* by a large margin and is 6% better
-than *OpenNLP*. The CNN model also outperforms all other neural network
-models. Interestingly, the CNN model performs better in a
-*zero-shot* scenario than in the previous tasks (*Europarl* and
-SETimes*). That suggests that the CNN model generalizes better than LSTM
-or Bi-LSTM for unseen abbreviations. The worst neural network model (LSTM
-model) still performs 1,6% better than *OpenNLP*.
+The table above shows the results for the *zero-shot* scenario. The
+bi-directional LSTM model outperforms *OpenNLP* by a large margin and is 7%
+better than *OpenNLP*. The bi-directional LSTM model also outperforms all other
+neural network models. That suggests that the bi-directional LSTM model
+generalizes better than LSTM or CNN for unseen abbreviations. The worst neural
+network model (CNN) still performs 2,5% better than *OpenNLP*.
 
 # Conclusion
 
@@ -409,6 +429,12 @@ optional arguments:
 The system and gold standard file must use `</eos>` as end-of-sentence marker.
 Then the evaluations script calculates precision, recall and F1-score. The
 `--verbose` parameter gives a detailed output of e.g. *false negatives*.
+
+# Acknowledgments
+
+We would like to thank the *Leibniz-Rechenzentrum der Bayerischen Akademie der
+Wissenschaften* ([LRZ](https://www.lrz.de/english/)) for giving us access to the
+NVIDIA *DGX-1* supercomputer.
 
 # Contact (Bugs, Feedback, Contribution and more)
 
