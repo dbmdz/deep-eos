@@ -272,12 +272,12 @@ still achieves better results than the *OpenNLP* model.
 
 ## *Zero-shot*
 
-| Model     | Precision | Recall | F1
-| --------- | --------- | ------ | ----------
-| LSTM      | 0.6046    | 0.9750 | 0.7464
-| Bi-LSTM   | 0.6341    | 0.9750 | **0.7684**
-| CNN       | 0.57350   | 0.9750 | 0.7222
-| *OpenNLP* | 54.60     | 96.25  | 69.68
+| Model     | Precision | Recall | F1-Score
+| --------- | --------- | ------ | ------------------------------------------------------------------------------------------------------
+| LSTM      | 0.6046    | 0.9750 | [0.7464](https://github.com/stefan-it/deep-eos/releases/download/v0.1/zeroshot.lstm.evaluation)
+| Bi-LSTM   | 0.6341    | 0.9750 | [**0.7684**](https://github.com/stefan-it/deep-eos/releases/download/v0.1/zeroshot.bi-lstm.evaluation)
+| CNN       | 0.57350   | 0.9750 | [0.7222](https://github.com/stefan-it/deep-eos/releases/download/v0.1/zeroshot.cnn.evaluation)
+| *OpenNLP* | 54.60     | 96.25  | 69.68]
 
 The table above shows the results for the *zero-shot* scenario. The
 bi-directional LSTM model outperforms *OpenNLP* by a large margin and is 7%
