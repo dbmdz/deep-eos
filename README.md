@@ -430,6 +430,12 @@ The system and gold standard file must use `</eos>` as end-of-sentence marker.
 Then the evaluations script calculates precision, recall and F1-score. The
 `--verbose` parameter gives a detailed output of e.g. *false negatives*.
 
+# Acknowledgments
+
+We would like to thank the *Leibniz-Rechenzentrum der Bayerischen Akademie der
+Wissenschaften* ([LRZ](https://www.lrz.de/english/)) for giving us access to the
+NVIDIA *DGX-1* supercomputer.
+
 # Contact (Bugs, Feedback, Contribution and more)
 
 For questions about *deep-eos*, contact the current maintainer:
