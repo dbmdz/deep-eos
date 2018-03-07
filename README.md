@@ -205,13 +205,12 @@ trainable parameters for each model.
 
 # Results
 
-We train a maximum of 10 epochs for each model. For the German and English
-corpus (*Europarl*) the time per epoch is 55 minutes for the Bi-LSTM
-model, 28 minutes for the LSTM model and 5 minutes for the CNN model. For each
-language from the *SETimes* corpus the time per epoch is 5 minutes for the
-Bi-LSMT model, 3 minutes for the LSTM model and 20 seconds for the CNN model.
-Timings are performed on a server machine with a single Nvidia Tesla K20Xm and
-Intel Xeon E5-2630.
+We train a maximum of 5 epochs for each model. For the German and English
+corpus (*Europarl*) the time per epoch is 54 minutes for the Bi-LSTM
+model, 35 minutes for the LSTM model and 7 minutes for the CNN model. For each
+language from the *SETimes* corpus the time per epoch is 6 minutes for the
+Bi-LSTM model, 4 minutes for the LSTM model and 50 seconds for the CNN model.
+Timings are performed on a *DGX-1* with a Nvidia *P-100*.
 
 ## Development set
 
