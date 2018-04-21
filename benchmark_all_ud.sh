@@ -17,14 +17,17 @@ do
     lang_prefix=$(echo $train_file | cut -d "-" -f 1)
 
 
-    cat $current_path/$train_file | grep -P "^# text" | sed 's+# text = ++g' > \
-        $current_path/$train_file.eos
+    cat $current_path/$train_file | grep -P "^# text" | sed 's+# text = ++g' \
+                                  | grep -P '[\.?!:;][^\n]?$' \
+                                  > $current_path/$train_file.eos
 
-    cat $current_path/$dev_file | grep -P "^# text" | sed 's+# text = ++g' > \
-        $current_path/$dev_file.eos
+    cat $current_path/$dev_file | grep -P "^# text" | sed 's+# text = ++g' \
+                                | grep -P '[\.?!:;][^\n]?$' \
+                                > $current_path/$dev_file.eos
 
-    cat $current_path/$test_file | grep -P "^# text" | sed 's+# text = ++g' > \
-        $current_path/$test_file.eos
+    cat $current_path/$test_file | grep -P "^# text" | sed 's+# text = ++g' \
+                                 | grep -P '[\.?!:;][^\n]?$' \
+                                 > $current_path/$test_file.eos
 
     for architecture in $ARCHITECTURES
     do
