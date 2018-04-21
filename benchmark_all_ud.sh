@@ -1,7 +1,7 @@
 UD_FOLDER="ud-treebanks-v2.1"
 ARCHITECTURES="lstm bi-lstm cnn"
 
-for folder in $(ls $UD_FOLDER | grep UD_Afrikaans)
+for folder in $(ls $UD_FOLDER)
 do
   current_path=$UD_FOLDER/$folder
   folder_files=$(ls $UD_FOLDER/$folder)
