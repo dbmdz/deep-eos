@@ -1,9 +1,11 @@
+"""Parse commandline options for deep-eos."""
 import argparse
 
 from eos import EOS
 
 
-def parse_arguments():
+def parse_arguments():  # pylint: disable-msg=too-many-statements
+    """Parse commandline options."""
     parser = argparse.ArgumentParser()
     parser.add_argument("mode", choices=["train", "test", "tag", "extract"])
     parser.add_argument("--training-file",
@@ -17,7 +19,7 @@ def parse_arguments():
     parser.add_argument(
         "--architecture",
         default="cnn",
-        help="Neural network architectures, supported: cnn, lstm, bi-lstm, gru, bi-gru, mlp")
+        help="Neural network architectures, supported: cnn, lstm, bi-lstm, gru, bi-gru, mlp")  # noqa: E501
     parser.add_argument("--window-size", default=5,
                         help="Defines number of window size (char-ngram)")
     parser.add_argument("--batch-size", default=32,
