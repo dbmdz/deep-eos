@@ -38,8 +38,6 @@ def parse_arguments():  # pylint: disable-msg=too-many-statements
                         help="Defines Kernel size of CNN")
     parser.add_argument("--filters", default=6,
                         help="Defines number of filters of CNN")
-    parser.add_argument("--pool-size", default=8,
-                        help="Defines pool size of CNN")
     parser.add_argument("--hidden-dims", default=250,
                         help="Defines number of hidden dims")
     parser.add_argument("--strides", default=1,
@@ -80,7 +78,6 @@ def parse_arguments():  # pylint: disable-msg=too-many-statements
                      int(args.mlp_dense_units),
                      int(args.kernel_size),
                      int(args.filters),
-                     int(args.pool_size),
                      int(args.hidden_dims),
                      int(args.strides),
                      args.model_filename,
@@ -115,10 +112,7 @@ def parse_arguments():  # pylint: disable-msg=too-many-statements
             parser.print_help()
             exit(1)
 
-        nn_eos.extract(
-            args.input_file, int(
-                args.window_size), int(
-                args.min_freq))
+        nn_eos.extract(args.input_file, int(args.window_size))
 
 
 if __name__ == '__main__':
