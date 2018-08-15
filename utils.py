@@ -1,7 +1,8 @@
-import re
 import pickle
-import numpy as np
+import re
 from collections import defaultdict
+
+import numpy as np
 
 
 class Utils(object):
@@ -130,16 +131,16 @@ class Utils(object):
             cleaned_left_context = left_context
             cleaned_right_context = right_context
 
-            #cleaned_left_context = re.sub(PUNCT, '', left_context)
-            #cleaned_right_context = re.sub(PUNCT, '', right_context)
+            # cleaned_left_context = re.sub(PUNCT, '', left_context)
+            # cleaned_right_context = re.sub(PUNCT, '', right_context)
 
             # Also replace multiple whitespaces (use *only* one whitespace)
             cleaned_left_context = re.sub('\s+', ' ', cleaned_left_context)
             cleaned_right_context = re.sub('\s+', ' ', cleaned_right_context)
 
             potential_eos_position.append((eos_position,
-                                          cleaned_left_context[-window_size:] + t[eos_position] +
-                                          cleaned_right_context[1:window_size + 1]))
+                                           cleaned_left_context[-window_size:] + t[eos_position] +
+                                           cleaned_right_context[1:window_size + 1]))
 
         return potential_eos_position
 
