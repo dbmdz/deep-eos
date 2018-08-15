@@ -1,3 +1,4 @@
+"""utils_test: implement unit tests for helper class."""
 import unittest
 
 import numpy as np
@@ -5,9 +6,10 @@ import numpy as np
 from utils import Utils
 
 
-class TestUtils(unittest.TestCase):
+class TestUtils(unittest.TestCase):  # pylint: disable-msg=too-many-instance-attributes # noqa: E501
 
     def setUp(self):
+        """Set up fixtures."""
         self.util = Utils()
         self.window_size = 3
         self.sentence = "Er sieht.\nIvana gibt.\nStefan mag.\nStefan am 3. Mai"
@@ -25,12 +27,13 @@ class TestUtils(unittest.TestCase):
              (0.0, np.array([float(i) for i in [11, 5, 14, 4, 5, 15, 12]]))
              ]
 
-        self.test_sentence = "Er sagt: ›Das ist so?‹ Wir machen “weiter”! Oki haben! – Aber dann\n"
+        self.test_sentence = "Er sagt: ›Das ist so?‹ Wir machen “weiter”! Oki haben! – Aber dann\n" # noqa: E501
         self.potential_eos_list_gold = [(7, "agt: ›D"), (20, " so?‹ W"),
                                         (42, "er”! Ok"),
                                         (53, "ben! – ")]
 
     def test_build_char_2_id_dict(self):
+        """Test if building the character to id dictionary works."""
         char_2_id_dict_cur = \
             self.util.build_char_2_id_dict(self.data_set_char_gold, 1)
 
@@ -40,6 +43,7 @@ class TestUtils(unittest.TestCase):
         self.assertDictEqual(char_2_id_dict_cur, self.char_2_id_dict_gold)
 
     def test_build_data_set(self):
+        """Test if the dataset is correctly built."""
         data_set_cur = self.util.build_data_set(self.data_set_char_gold,
                                                 self.char_2_id_dict_gold,
                                                 self.window_size)
@@ -53,12 +57,14 @@ class TestUtils(unittest.TestCase):
             self.assertEqual(feature_vector_equals, True)
 
     def test_build_data_set_char(self):
+        """Test if the character dataset is correctly built."""
         data_set_char_cur = self.util.build_data_set_char(self.sentence,
                                                           self.window_size)
 
         self.assertEqual(data_set_char_cur, self.data_set_char_gold)
 
     def test_build_potential_eos_list(self):
+        """Test if the potential eos list is correctly extracted."""
         potential_eos_list_cur = self.util.build_potential_eos_list(
             self.test_sentence, self.window_size)
 
