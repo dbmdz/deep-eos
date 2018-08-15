@@ -1,5 +1,7 @@
 import unittest
+
 import numpy as np
+
 from utils import Utils
 
 
@@ -19,8 +21,8 @@ class TestUtils(unittest.TestCase):
         self.data_set_gold = \
             [(1.0, np.array([float(i) for i in [1, 2, 3, 4, 5, 6, 7]])),
              (1.0, np.array([float(i) for i in [8, 9, 3, 4, 5, 10, 3]])),
-                (1.0, np.array([float(i) for i in [11, 12, 13, 4, 5, 10, 3]])),
-                (0.0, np.array([float(i) for i in [11, 5, 14, 4, 5, 15, 12]]))
+             (1.0, np.array([float(i) for i in [11, 12, 13, 4, 5, 10, 3]])),
+             (0.0, np.array([float(i) for i in [11, 5, 14, 4, 5, 15, 12]]))
              ]
 
         self.test_sentence = "Er sagt: ›Das ist so?‹ Wir machen “weiter”! Oki haben! – Aber dann\n"
