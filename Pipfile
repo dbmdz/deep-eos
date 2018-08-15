@@ -5,6 +5,7 @@ name = "pypi"
 
 [dev-packages]
 prospector = {version = "*", extras = ["with_mypy"]}
+pytest = "*"
 
 [packages]
 click = "*"
@@ -16,3 +17,4 @@ python_version = "3.6.6"
 
 [scripts]
 check = "prospector"
+tests = "pytest"
