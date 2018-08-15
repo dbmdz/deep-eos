@@ -1,6 +1,6 @@
 """eval: script that calculates various evaluation metrics."""
 
-import argparse
+import click
 
 EOS_TOKEN = "</eos>"
 
@@ -66,30 +66,16 @@ def evaluate(gold_tokens, system_tokens, verbose=False):
     return (precision, recall, f_score)
 
 
-def parse_arguments():
+@click.command()
+@click.option('-g', '--gold', type=click.Path(exists=True), help='Gold standard')  # noqa: E501
+@click.option('-s', '--system', type=click.Path(exists=True), help='System output')  # noqa: E501
+@click.option('-v', '--verbose', count=True, help='Verbose output')
+def parse_arguments(gold, system, verbose):
     """Parse commandline options."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-g", "--gold", help="Gold standard")
-    parser.add_argument("-s", "--system", help="System output")
-    parser.add_argument("-v", "--verbose", help="Verbose output",
-                        action='store_true', default=False)
-    args = parser.parse_args()
+    gold_tokens = read_file_to_token_list(gold)
+    system_tokens = read_file_to_token_list(system)
 
-    if not args.gold:
-        print("Gold standard file name is missing!")
-        parser.print_help()
-        exit(1)
-
-    if not args.system:
-        print("System output file name is missing!")
-        parser.print_help()
-        exit(1)
-
-    gold_tokens = read_file_to_token_list(args.gold)
-    system_tokens = read_file_to_token_list(args.system)
-
-    precision, recall, f_score = evaluate(gold_tokens, system_tokens,
-                                          args.verbose)
+    precision, recall, f_score = evaluate(gold_tokens, system_tokens, verbose)
 
     print("Precision:", precision)
     print("Recall:", recall)
@@ -97,4 +83,4 @@ def parse_arguments():
 
 
 if __name__ == '__main__':
-    parse_arguments()
+    parse_arguments()  # pylint: disable=no-value-for-parameter
