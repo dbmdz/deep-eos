@@ -1,20 +1,13 @@
-import keras
-import re
-
 import numpy as np
-
-from keras.models import load_model
-from keras.models import Sequential
+from keras.callbacks import ModelCheckpoint
+from keras.layers import Conv1D, GlobalMaxPooling1D
 from keras.layers import Dense, Dropout, Activation
 from keras.layers import Embedding
 from keras.layers import LSTM, GRU, Bidirectional
-from keras.layers import Conv1D, MaxPooling1D, GlobalAveragePooling1D, GlobalMaxPooling1D
 from keras.layers.noise import AlphaDropout
-from keras.callbacks import ModelCheckpoint
-
+from keras.models import Sequential
+from keras.models import load_model
 from keras.utils import plot_model
-
-from keras.layers.advanced_activations import LeakyReLU
 
 from utils import Utils
 
@@ -149,7 +142,6 @@ class EOS(object):
         model.compile(loss='binary_crossentropy',
                       optimizer='adam',
                       metrics=['accuracy'])
-
 
         model.summary()
 
