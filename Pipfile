@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+prospector = {version = "*", extras = ["with_mypy"]}
+
+[packages]
+click = "*"
+Keras = "*"
+tensorflow = "*"
+
+[requires]
+python_version = "3.6.6"
+
+[scripts]
+check = "prospector"
