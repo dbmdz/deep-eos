@@ -16,5 +16,5 @@ tensorflow = "*"
 python_version = "3.6.6"
 
 [scripts]
-check = "prospector"
+check = "prospector --with-tool mypy"
 tests = "pytest"

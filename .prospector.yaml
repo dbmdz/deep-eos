@@ -1,0 +1,11 @@
+strictness: veryhigh
+doc-warnings: true
+member-warnings: true
+mypy:
+  run: true
+  options:
+    ignore-missing-imports: true
+pep257:
+  disable:
+    - D203  # Don't require blank line before class docstrings
+    - D213  # Don't require summaries to start on the second line
