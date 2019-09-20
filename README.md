@@ -450,3 +450,19 @@ To respect the Free Software Movement and the enormous work of Dr. Richard Stall
 this implementation is released under the *GNU Affero General Public License*
 in version 3. More information can be found [here](https://www.gnu.org/licenses/licenses.html)
 and in `COPYING`.
+
+# Cite
+S. Schweter and S. Ahmed, "Deep-EOS: General-Purpose Neural Networks for Sentence Boundary Detection” in Proceedings of the 15th Conference on Natural Language Processing (KONVENS), 2019.
+
+# BibTeX
+
+```
+@InProceedings{Schweter:Ahmed:2019,
+author = {Stefan Schweter and Sajawel Ahmed},
+title = {{Deep-EOS: General-Purpose Neural Networks for Sentence Boundary Detection}},
+booktitle = {Proceedings of the 15th Conference on Natural Language Processing (KONVENS)},
+location = {Erlangen, Germany},
+year = 2019,
+note = {accepted}
+}
+```
