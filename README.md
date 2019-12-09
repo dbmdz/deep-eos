@@ -454,6 +454,11 @@ and in `COPYING`.
 # Cite
 S. Schweter and S. Ahmed, "Deep-EOS: General-Purpose Neural Networks for Sentence Boundary Detection” in Proceedings of the 15th Conference on Natural Language Processing (KONVENS), 2019.
 
+## Errata
+
+* Related work section: *Elephant* can be trained on data that is not tokenized (and that is only sentence-segmented), see
+  issue https://github.com/dbmdz/deep-eos/issues/4.
+
 # BibTeX
 
 ```
