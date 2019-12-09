@@ -440,9 +440,8 @@ NVIDIA *DGX-1* supercomputer.
 
 # Contact (Bugs, Feedback, Contribution and more)
 
-For questions about *deep-eos*, contact the current maintainer:
-Stefan Schweter <stefan@schweter.it>. If you want to contribute to the project
-please refer to the [Contributing](CONTRIBUTING.md) guide!
+For questions about *deep-eos*, please create a new issue [here](https://github.com/dbmdz/deep-eos/issues/new).
+If you want to contribute to the project please refer to the [Contributing](CONTRIBUTING.md) guide!
 
 # License
 
@@ -452,14 +451,10 @@ in version 3. More information can be found [here](https://www.gnu.org/licenses/
 and in `COPYING`.
 
 # Cite
+
 S. Schweter and S. Ahmed, "Deep-EOS: General-Purpose Neural Networks for Sentence Boundary Detection” in Proceedings of the 15th Conference on Natural Language Processing (KONVENS), 2019.
 
-## Errata
-
-* Related work section: *Elephant* can be trained on data that is not tokenized (and that is only sentence-segmented), see
-  issue https://github.com/dbmdz/deep-eos/issues/4.
-
-# BibTeX
+You can use the following BibTeX entry:
 
 ```
 @InProceedings{Schweter:Ahmed:2019,
@@ -471,3 +466,12 @@ year = 2019,
 note = {accepted}
 }
 ```
+
+## Errata
+
+* Related work section: *Elephant* can be trained on data that is not tokenized (and that is only sentence-segmented), see
+  issue https://github.com/dbmdz/deep-eos/issues/4.
+
+# Fork(s)
+
+A PyTorch fork of *deep-eos* was written by @m-stoeckel and is available [here](https://github.com/m-stoeckel/deep-eos-pytorch).
